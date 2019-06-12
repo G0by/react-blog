@@ -43,15 +43,7 @@ const SingleArticle = ({ article, disqusConfig, disqusShortname }) => (
           </div>
         </div>
       </div>
-      <div className="section bt-1 bg-grey">
-        <div className="container">
-          <div className="row text-center">
-            <div className="text-center p-5">
-              <Disqus.DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
-            </div>
-          </div>
-        </div>
-      </div>
+      <Disqus.DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
     </main>
     {/* END Main container */}
   </div>
