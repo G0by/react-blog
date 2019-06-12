@@ -31,22 +31,15 @@ class SingleArticleContainer extends React.Component {
   }
 
   getComments = () => {
-    const disqusShortname = 'example';
+    const disqusShortname = 'Gooberblog';
     const disqusConfig = {
-      url: this.props.article.url,
-      identifier: this.props.article.id,
-      title: this.props.article.title,
+      url: `https://gooberblog.herokuapp.com/article/${this.state.article.id}`,
+      identifier: this.state.article.id,
+      title: this.state.article.title,
     };
 
     return (
-      <div className="article">
-        <h1>{this.props.article.title}</h1>
-        <Disqus.CommentCount shortname={disqusShortname} config={disqusConfig}>
-          Comments
-        </Disqus.CommentCount>
-        <p>{this.props.article.body}</p>
-        <Disqus.DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
-      </div>
+      <Disqus.DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
     );
   }
 
@@ -57,6 +50,7 @@ class SingleArticleContainer extends React.Component {
           !this.state.loading && (
             <Article
               article={this.state.article}
+              getComments={this.getComments}
             />
           )
         }
