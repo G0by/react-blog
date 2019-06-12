@@ -1,8 +1,9 @@
 import React from 'react';
+import Disqus from 'disqus-react';
 import PropTypes from 'prop-types';
 import renderHtml from 'react-render-html';
 
-const SingleArticle = ({ article, getComments }) => (
+const SingleArticle = ({ article, disqusConfig, disqusShortname }) => (
   <div>
     <header className="header header-inverse h-fullscreen pb-80" style={{ backgroundImage: `url(${article.imageUrl})` }} data-overlay={8}>
       <div className="container text-center">
@@ -46,7 +47,7 @@ const SingleArticle = ({ article, getComments }) => (
         <div className="container">
           <div className="row text-center">
             <div className="text-center p-5">
-              {getComments}
+              <Disqus.DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
             </div>
           </div>
         </div>
