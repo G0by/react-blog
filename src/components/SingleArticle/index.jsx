@@ -51,9 +51,9 @@ class SingleArticleContainer extends React.Component {
             <Article
               article={this.state.article}
               getComments={this.getComments}
-              disqusShortname="Gooberblog"
+              disqusShortname="bahdblog"
               disqusConfig={{
-                url: `https://gooberblog.herokuapp.com/article/${this.state.article.id}`,
+                url: `https://gooberblog.herokuapp.com/article/${this.state.article.slug}`,
                 identifier: this.state.article.id,
                 title: this.state.article.title,
               }}
