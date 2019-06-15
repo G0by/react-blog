@@ -27,7 +27,10 @@ const Navbar = ({ authUser, removeAuthUser }) => ((
           {
             authUser && (
               <li className="nav-item">
-                <a className="nav-link" href="#">Hey {authUser && authUser.user.name}!
+                <a className="nav-link" href="#">
+                  Hey
+                  {authUser && authUser.user.name}
+                  !
                   <i className="fa fa-caret-down" />
                 </a>
                 <div className="nav-submenu">
@@ -63,6 +66,7 @@ Navbar.propTypes = {
       name: PropTypes.string,
     }).isRequired,
   }),
+  removeAuthUser: PropTypes.func.isRequired,
 };
 
 Navbar.defaultProps = {

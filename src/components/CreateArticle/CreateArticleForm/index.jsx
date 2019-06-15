@@ -8,6 +8,7 @@ import Banner from '../../Banner';
 const CreateArticleForm = ({
   handleInputChange, categories, handleSubmit, errors, editing,
   article, content, title, category, updateArticle, handleEditorState,
+  loading,
 }) => ((
   <div>
     {/* Header */}
@@ -44,9 +45,9 @@ const CreateArticleForm = ({
                   <div className="form-group col-12 col-md-6">
                     <select name="category" onChange={handleInputChange} value={category || ''} className="form-control form-control-lg">
                       <option value>Select category</option>
-                      {categories.map(category => (
-                        <option key={category} value={category.id}>
-                          {category.name}
+                      {categories.map(singleCategory => (
+                        <option key={singleCategory} value={singleCategory.id}>
+                          {singleCategory.name}
                         </option>
                       ))}
                     </select>
@@ -59,7 +60,10 @@ const CreateArticleForm = ({
                   />
                 </div>
                 <div className="text-center">
-                  <button className="btn btn-lg btn-primary" type="submit">{editing ? 'Update Article' : 'Create Article'}</button>
+                  <button className="btn btn-lg btn-primary" type="submit" disabled={loading}>
+                    {loading && <i className="fa fa-refresh fa-spin" />}
+                    {editing ? 'Update Article' : 'Create Article'}
+                  </button>
                 </div>
               </form>
             </div>
@@ -73,6 +77,8 @@ const CreateArticleForm = ({
 
 CreateArticleForm.propTypes = {
   handleInputChange: PropTypes.func.isRequired,
+  handleEditorState: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
   categories: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,

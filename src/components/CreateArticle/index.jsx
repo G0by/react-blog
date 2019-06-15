@@ -18,6 +18,7 @@ class CreateArticle extends React.Component {
       categories: [],
       editing: false,
       article: null,
+      loading: false,
     };
   }
 
@@ -38,7 +39,7 @@ class CreateArticle extends React.Component {
         categories,
         title: article.title,
         category: article.category_id,
-        //content: article.content,
+        image: article.image,
       });
     } else {
       this.setState({
@@ -55,6 +56,9 @@ class CreateArticle extends React.Component {
 
   handleSubmit = async (event) => {
     event.preventDefault();
+    this.setState({
+      loading: true,
+    });
 
     try {
       await this.props.createArticle({
@@ -69,10 +73,17 @@ class CreateArticle extends React.Component {
       this.props.notyService.error('Something went wrong.');
       this.setState({ errors });
     }
+
+    this.setState({
+      loading: false,
+    });
   }
 
   updateArticle = async (event) => {
     event.preventDefault();
+    this.setState({
+      loading: true,
+    });
 
     try {
       await this.props.updateArticle({
@@ -87,6 +98,10 @@ class CreateArticle extends React.Component {
       this.props.notyService.error('Something went wrong.');
       this.setState({ errors });
     }
+
+    this.setState({
+      loading: false,
+    });
   }
 
   handleInputChange = (event) => {
@@ -110,6 +125,8 @@ class CreateArticle extends React.Component {
         content={this.state.content}
         updateArticle={this.updateArticle}
         handleEditorState={this.handleEditorState}
+        loading={this.state.loading}
+        image={this.state.image}
       />
     );
   }
@@ -122,6 +139,10 @@ CreateArticle.propTypes = {
   token: PropTypes.string.isRequired,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
+  }).isRequired,
+  notyService: PropTypes.shape({
+    success: PropTypes.func.isRequired,
+    error: PropTypes.func.isRequired,
   }).isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape({

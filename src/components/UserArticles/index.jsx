@@ -61,6 +61,9 @@ UserArticles.propTypes = {
   token: PropTypes.string.isRequired,
   setArticles: PropTypes.func.isRequired,
   deleteArticle: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 export default UserArticles;

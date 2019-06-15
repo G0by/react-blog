@@ -34,14 +34,6 @@ const Login = ({ handleInputChange, handleSubmit, errors }) => ((
             && <small className="text-danger">{errors.password}</small>
           }
         </div>
-        <div className="form-group flexbox py-10">
-          <label className="custom-control custom-checkbox">
-            <input type="checkbox" className="custom-control-input" defaultChecked />
-            <span className="custom-control-indicator" />
-            <span className="custom-control-description">Remember me</span>
-          </label>
-          <a className="text-muted hover-primary fs-13" href="#">Forgot password?</a>
-        </div>
         <div className="form-group">
           <button className="btn btn-bold btn-block btn-primary" type="submit">Login</button>
         </div>

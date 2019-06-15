@@ -54,4 +54,21 @@ const SingleArticle = ({ article, disqusConfig, disqusShortname }) => (
 
 );
 
+SingleArticle.propTypes = {
+  article: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    imageUrl: PropTypes.string.isRequired,
+    category: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+    }).isRequired,
+    created_at: PropTypes.string.isRequired,
+  }).isRequired,
+  disqusConfig: PropTypes.shape({
+    url: PropTypes.string.isRequired,
+    identifier: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+  }).isRequired,
+  disqusShortname: PropTypes.string.isRequired,
+};
+
 export default SingleArticle;

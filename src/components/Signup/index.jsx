@@ -14,7 +14,6 @@ class Signup extends React.Component {
       password_confirmation: '',
       errors: {},
     };
-
   }
 
   handleInputChange = (event) => {
@@ -26,7 +25,7 @@ class Signup extends React.Component {
   handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const user = await this.props.registerUser(this.state)
+      const user = await this.props.registerUser(this.state);
       this.props.setAuthUser(user);
     } catch (errors) {
       this.setState({ errors });

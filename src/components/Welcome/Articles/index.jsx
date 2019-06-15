@@ -11,7 +11,7 @@ const Articles = ({
   <div>
 
     <Banner
-      backgroundImage="url(assets/img/bg-gift.jpg)"
+      backgroundImage={`url(${process.env.PUBLIC_URL}/assets/img/bg-gift.jpg)`}
       title="Latest Blog Posts"
       subTitle="Read and get updated on how we progress."
     />
@@ -26,14 +26,14 @@ const Articles = ({
             </div>
           ))}
           <nav className="flexbox mt-50 mb-50">
-            <a className={`btn btn-white ${prevUrl ? '' : 'disabled'}`} href="#" onClick={() => handlePagination(prevUrl)}>
+            <button type="button" className={`btn btn-white ${prevUrl ? '' : 'disabled'}`} onClick={() => handlePagination(prevUrl)}>
               <i className="ti-arrow-right fs-9 ml-4" />
               Older
-            </a>
-            <a className={`btn btn-white ${nextUrl ? '' : 'disabled'}`} href="#" onClick={() => handlePagination(nextUrl)}>
+            </button>
+            <button type="button" className={`btn btn-white ${nextUrl ? '' : 'disabled'}`} onClick={() => handlePagination(nextUrl)}>
               Newer
               <i className="ti-arrow-left fs-9 mr-4" />
-            </a>
+            </button>
           </nav>
 
         </div>

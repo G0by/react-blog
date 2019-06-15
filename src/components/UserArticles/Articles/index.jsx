@@ -1,9 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Banner from '../../Banner';
 import Article from '../../Article';
 
-const Articles = ({ articles, handlePagination, nextUrl, prevUrl, deleteArticle, editArticle }) => ((
+const Articles = ({
+  articles, handlePagination, nextUrl, prevUrl, deleteArticle, editArticle,
+}) => ((
   <div>
 
     <Banner
@@ -41,5 +44,22 @@ const Articles = ({ articles, handlePagination, nextUrl, prevUrl, deleteArticle,
     </main>
   </div>
 ));
+
+Articles.propTypes = {
+  articles: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+  })),
+  handlePagination: PropTypes.func.isRequired,
+  nextUrl: PropTypes.string,
+  prevUrl: PropTypes.string,
+  deleteArticle: PropTypes.func.isRequired,
+  editArticle: PropTypes.func.isRequired,
+};
+
+Articles.defaultProps = {
+  articles: [],
+  nextUrl: null,
+  prevUrl: null,
+};
 
 export default Articles;
